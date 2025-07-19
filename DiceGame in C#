@@ -1,0 +1,67 @@
+using System;
+
+namespace DiceGame
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int playerRandomNum;
+            int enemyRandomNum;
+
+            int playerPoints = 0;
+            int enemyPoints = 0;
+
+            // This tells the program to create a Random number
+            Random random = new Random();
+
+            // This creates a for loop to run 10 times
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine("Press any key to roll the dice.");
+                Console.ReadKey();
+
+                // This creates a players random number in between 1 and 7
+                playerRandomNum = random.Next(1, 7);
+                Console.WriteLine("You rolled a " + playerRandomNum);
+
+                Console.WriteLine("...");
+                // This tells the system to sleep for 1sec or 1000ms
+                System.Threading.Thread.Sleep(1000);
+
+                // This creates the enemy's random number in between 1 and 7
+                enemyRandomNum = random.Next(1, 7);
+                Console.WriteLine("Enemy AI rolled a " + enemyRandomNum);
+
+                if(playerRandomNum > enemyRandomNum)
+                {
+                    playerPoints++;
+                    Console.WriteLine("Player wins this round!");
+
+                }
+                else if(playerRandomNum < enemyRandomNum) {
+                    enemyPoints++;
+                    Console.WriteLine("Enemy wins this round!");
+                }
+                else
+                {
+                    Console.WriteLine("Draw!");
+                }
+
+                Console.WriteLine("The score is now - Player: " + playerPoints + ". Enemy: " + enemyPoints ".");
+            }
+            if (playerPoints > enemyPoints)
+            {
+                Console.WriteLine("You win!");
+            }
+            else if (enemyPoints > playerPoints)
+            {
+                Console.WriteLine("You lose!");
+            }
+            else
+            {
+                Console.WriteLine("It's a draw!");
+            }
+        } Console.ReadKey();
+    }
+}
